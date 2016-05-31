@@ -1,0 +1,1 @@
+export { default } from 'ember-theater-director-backdrop/components/ember-theater-director-direction-backdrop';
