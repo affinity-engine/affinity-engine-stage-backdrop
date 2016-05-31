@@ -1,7 +1,7 @@
 {
   "name": "ember-theater-director-backdrop",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Add backdrops to Ember Theater Director",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/ember-theater/ember-theater-director-backdrop",
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -57,6 +57,9 @@
     "ember-cli-babel": "^5.1.6"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "after": [
+      "ember-theater-director"
+    ]
   }
 }
