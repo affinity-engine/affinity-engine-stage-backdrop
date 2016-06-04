@@ -28,14 +28,14 @@ moduleForComponent('ember-theater-director-direction-backdrop', 'Integration | C
   }
 });
 
-const configurablePriority = [
+const configurationTiers = [
   'directable.attrs',
   'directable.attrs.fixture',
   'config.attrs.director.backdrop',
   'config.attrs.globals'
 ];
 
-configurablePriority.forEach((priority) => {
+configurationTiers.forEach((priority) => {
   test(`imageElement is assigned by priority ${priority}`, function(assert) {
     assert.expect(1);
 
