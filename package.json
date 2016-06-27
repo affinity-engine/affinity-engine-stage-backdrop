@@ -1,7 +1,7 @@
 {
-  "name": "affinity-engine-stage-backdrop",
+  "name": "affinity-engine-stage-direction-backdrop",
   "version": "0.0.0",
-  "description": "Add backdrops to Affinity Engine Director",
+  "description": "Add backdrops to Affinity Engine Stage",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "https://github.com/affinity-engine/affinity-engine-stage-backdrop",
+  "repository": "https://github.com/affinity-engine/affinity-engine-stage-direction-backdrop",
   "engines": {
     "node": ">= 0.10.0"
   },

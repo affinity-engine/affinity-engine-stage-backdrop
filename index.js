@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'affinity-engine-stage-backdrop'
+  name: 'affinity-engine-stage-direction-backdrop'
 };

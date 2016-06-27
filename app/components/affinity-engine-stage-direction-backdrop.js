@@ -1,1 +1,1 @@
-export { default } from 'affinity-engine-stage-backdrop/components/affinity-engine-stage-direction-backdrop';
+export { default } from 'affinity-engine-stage-direction-backdrop/components/affinity-engine-stage-direction-backdrop';
