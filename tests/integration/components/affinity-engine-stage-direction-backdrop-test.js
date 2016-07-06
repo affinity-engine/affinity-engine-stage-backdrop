@@ -98,7 +98,7 @@ test('alt is set by the fixture id if no caption is present', function(assert) {
   set(this, 'translator', translator);
   set(this, 'directable', { attrs: { fixture: { id: 'foo' } } });
 
-  this.render(hbs`{{affinity-engine-stage-direction-backdrop directable=directable translator=translator}}`);
+  this.render(hbs`{{affinity-engine-stage-direction-backdrop directable=directable translator=translator engineId="foo" windowId="bar"}}`);
 
   assert.equal(this.$('img').attr('alt'), 'bar', 'alt is correct');
 });
