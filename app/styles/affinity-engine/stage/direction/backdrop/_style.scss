@@ -1,0 +1,16 @@
+.ae-backdrop-container, .ae-backdrop {
+  @extend .ae-unselectable;
+  height: 100%;
+  width: 100%;
+}
+
+.ae-backdrop-container {
+  display: flex;
+  position: absolute;
+}
+
+.ae-backdrop {
+  object-fit: cover;
+
+  color: transparent;
+}

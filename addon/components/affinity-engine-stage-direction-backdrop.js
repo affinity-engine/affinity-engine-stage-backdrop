@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import multiton from 'ember-multiton-service';
-import { configurable, deepArrayConfigurable } from 'affinity-engine';
+import { configurable, deepArrayConfigurable, registrant } from 'affinity-engine';
 import { DirectableComponentMixin, TransitionableComponentMixin, TransitionableComponentAutoMixin } from 'affinity-engine-stage';
 
 const {
@@ -20,13 +20,13 @@ const configurationTiers = [
 ];
 
 export default Component.extend(DirectableComponentMixin, TransitionableComponentMixin, TransitionableComponentAutoMixin, {
-  classNames: ['et-backdrop-container'],
+  classNames: ['ae-backdrop-container'],
   hook: 'backdrop_direction',
 
   translator: service('affinity-engine/translator'),
 
   config: multiton('affinity-engine/config', 'engineId'),
-  preloader: multiton('affinity-engine/preloader', 'engineId'),
+  preloader: registrant('preloader'),
 
   caption: configurable(configurationTiers, 'caption'),
   src: configurable(configurationTiers, 'src'),
@@ -40,7 +40,7 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
     const image = get(this, 'image');
     const $image = this.$(image).clone();
 
-    $image.addClass('et-backdrop');
+    $image.addClass('ae-backdrop');
     $image.attr('alt', captionTranslation);
 
     this.$().append($image);
