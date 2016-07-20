@@ -26,7 +26,7 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
   translator: service('affinity-engine/translator'),
 
   config: multiton('affinity-engine/config', 'engineId'),
-  preloader: registrant('preloader'),
+  preloader: registrant('affinity-engine/preloader'),
 
   caption: configurable(configurationTiers, 'caption'),
   src: configurable(configurationTiers, 'src'),
