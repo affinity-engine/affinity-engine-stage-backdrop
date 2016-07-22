@@ -20,8 +20,8 @@ const configurationTiers = [
 ];
 
 export default Component.extend(DirectableComponentMixin, TransitionableComponentMixin, TransitionableComponentAutoMixin, {
-  classNames: ['ae-backdrop-container'],
-  hook: 'backdrop_direction',
+  classNames: ['ae-stage-direction-backdrop-container'],
+  hook: 'affinity_engine_stage_direction_backdrop',
 
   translator: service('affinity-engine/translator'),
 
@@ -40,7 +40,7 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
     const image = get(this, 'image');
     const $image = this.$(image).clone();
 
-    $image.addClass('ae-backdrop');
+    $image.addClass('ae-stage-direction-backdrop');
     $image.attr('alt', captionTranslation);
 
     this.$().append($image);

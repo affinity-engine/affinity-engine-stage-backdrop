@@ -1,15 +1,15 @@
-.ae-backdrop-container, .ae-backdrop {
+.ae-stage-direction-backdrop-container, .ae-stage-direction-backdrop {
   @extend .ae-unselectable;
   height: 100%;
   width: 100%;
 }
 
-.ae-backdrop-container {
+.ae-stage-direction-backdrop-container {
   display: flex;
   position: absolute;
 }
 
-.ae-backdrop {
+.ae-stage-direction-backdrop {
   object-fit: cover;
 
   color: transparent;
