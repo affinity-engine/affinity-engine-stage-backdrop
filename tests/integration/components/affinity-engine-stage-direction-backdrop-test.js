@@ -37,7 +37,7 @@ configurationTiers.forEach((priority) => {
   test(`imageElement is assigned by priority ${priority}`, function(assert) {
     assert.expect(1);
 
-    const stub = deepStub(priority, 'imageElement', '<img id="success">');
+    const stub = deepStub(priority, { imageElement: '<img id="success">' });
 
     setProperties(this, getProperties(stub, 'config', 'directable'));
 
@@ -49,7 +49,7 @@ configurationTiers.forEach((priority) => {
   test(`src is assigned by priority ${priority}`, function(assert) {
     assert.expect(1);
 
-    const stub = deepStub(priority, 'src', 'foo');
+    const stub = deepStub(priority, { src: 'foo' });
 
     setProperties(this, getProperties(stub, 'config', 'directable'));
 
@@ -70,7 +70,7 @@ configurationTiers.forEach((priority) => {
       }
     };
 
-    const stub = deepStub(priority, 'caption', 'foo');
+    const stub = deepStub(priority, { caption: 'foo' });
 
     setProperties(this, getProperties(stub, 'config', 'directable'));
     set(this, 'translator', translator);
