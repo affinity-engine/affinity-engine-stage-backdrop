@@ -9,7 +9,7 @@ export default Controller.extend({
       effect: { opacity: 0.1 },
       duration: 100
     },
-    plugin: {
+    component: {
       stage: {
         direction: {
           backdrop: {

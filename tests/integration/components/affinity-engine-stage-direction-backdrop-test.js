@@ -29,8 +29,8 @@ moduleForComponent('affinity-engine-stage-direction-backdrop', 'Integration | Co
 const configurationTiers = [
   'directable.attrs',
   'directable.attrs.fixture',
-  'config.attrs.plugin.stage.direction.backdrop',
-  'config.attrs.plugin.stage',
+  'config.attrs.component.stage.direction.backdrop',
+  'config.attrs.component.stage',
   'config.attrs'
 ];
 
