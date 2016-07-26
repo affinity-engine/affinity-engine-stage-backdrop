@@ -15,8 +15,9 @@ const { inject: { service } } = Ember;
 const configurationTiers = [
   'directable.attrs',
   'directable.attrs.fixture',
-  'config.attrs.stage.backdrop',
-  'config.attrs.globals'
+  'config.attrs.plugin.stage.direction.backdrop',
+  'config.attrs.plugin.stage',
+  'config.attrs'
 ];
 
 export default Component.extend(DirectableComponentMixin, TransitionableComponentMixin, TransitionableComponentAutoMixin, {
