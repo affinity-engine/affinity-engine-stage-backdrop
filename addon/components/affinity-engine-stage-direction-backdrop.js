@@ -46,9 +46,10 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
 
   captionTranslation: computed('directable.attrs.fixture.id', 'caption', {
     get() {
-      const translation = get(this, 'caption') || `backdrops.${get(this, 'directable.attrs.fixture.id')}`;
+      const caption = get(this, 'caption');
+      const key = caption || `backdrops.${get(this, 'directable.attrs.fixture.id')}`;
 
-      return get(this, 'translator').translate(translation);
+      return get(this, 'translator').translate(key) || caption;
     }
   }).readOnly(),
 
