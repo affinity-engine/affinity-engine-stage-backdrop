@@ -10,8 +10,6 @@ const {
   observer
 } = Ember;
 
-const { inject: { service } } = Ember;
-
 const configurationTiers = [
   'directable.attrs',
   'directable.attrs.fixture',
@@ -24,10 +22,9 @@ export default Component.extend(DirectableComponentMixin, TransitionableComponen
   classNames: ['ae-stage-direction-backdrop-container'],
   hook: 'affinity_engine_stage_direction_backdrop',
 
-  translator: service('affinity-engine/translator'),
-
   config: multiton('affinity-engine/config', 'engineId'),
   preloader: registrant('affinity-engine/preloader'),
+  translator: registrant('affinity-engine/translator'),
 
   caption: configurable(configurationTiers, 'caption'),
   src: configurable(configurationTiers, 'src'),
