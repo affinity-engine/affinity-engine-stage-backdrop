@@ -16,7 +16,7 @@ moduleForAcceptance('Acceptance | affinity-engine/stage/directions/backdrop', {
 test('Affinity Engine | stage | Directions | Backdrop', function(assert) {
   assert.expect(13);
 
-  visit('/affinity-engine/test-scenarios/stage/directions/backdrop').then(() => {
+  visit('/').then(() => {
     assert.ok($hook('affinity_engine_stage_direction_backdrop').length > 0, 'backdrop is rendered');
     assert.equal(parseFloat($hook('affinity_engine_stage_direction_backdrop').css('opacity')).toFixed(1), '0.1', 'by default uses the config setting to `transition`');
     assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_backdrop')} img`).attr('alt'), 'Classroom', '`alt` is set by the fixture `caption`');

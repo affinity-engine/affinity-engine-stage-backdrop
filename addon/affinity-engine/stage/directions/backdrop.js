@@ -5,7 +5,6 @@ import { Direction } from 'affinity-engine-stage';
 
 const {
   get,
-  isEmpty,
   merge,
   set,
   typeOf
@@ -37,13 +36,6 @@ export default Direction.extend({
     set(this, 'attrs.fixture', fixture);
     set(this, 'id', id);
 
-    if (isEmpty(get(this, '_$instance'))) {
-      const transition = { type: 'transition', queue: 'main' };
-
-      get(this, 'attrs.transitions').pushObject(transition);
-      set(this, 'hasDefaultTransition', true);
-    }
-
     return this;
   },
 
@@ -65,7 +57,7 @@ export default Direction.extend({
     this._removeDefaultTransition();
     this._entryPoint();
 
-    const transitions = get(this, 'attrs.transitions');
+    const transitions = get(this, 'attrs.transitions') || set(this, 'attrs.transitions', []);
 
     transitions.pushObject(merge({ delay, type: 'delay', queue: 'main' }, options));
 
@@ -76,17 +68,10 @@ export default Direction.extend({
     this._removeDefaultTransition();
     this._entryPoint();
 
-    const transitions = get(this, 'attrs.transitions');
+    const transitions = get(this, 'attrs.transitions') || set(this, 'attrs.transitions', []);
 
     transitions.pushObject(merge({ duration, effect, type: 'transition', queue: 'main' }, options));
 
     return this;
-  },
-
-  _removeDefaultTransition() {
-    if (get(this, 'hasDefaultTransition')) {
-      set(this, 'hasDefaultTransition', false);
-      set(this, 'attrs.transitions', Ember.A());
-    }
   }
 });
