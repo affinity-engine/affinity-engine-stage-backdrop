@@ -53,24 +53,22 @@ export default Direction.extend({
     return this;
   },
 
-  delay(delay, options = {}) {
-    this._removeDefaultTransition();
+  delay(duration, options = {}) {
     this._entryPoint();
 
     const transitions = get(this, 'attrs.transitions') || set(this, 'attrs.transitions', []);
 
-    transitions.pushObject(merge({ delay, type: 'delay', queue: 'main' }, options));
+    transitions.pushObject(merge({ duration }, options));
 
     return this;
   },
 
   transition(effect, duration, options = {}) {
-    this._removeDefaultTransition();
     this._entryPoint();
 
     const transitions = get(this, 'attrs.transitions') || set(this, 'attrs.transitions', []);
 
-    transitions.pushObject(merge({ duration, effect, type: 'transition', queue: 'main' }, options));
+    transitions.pushObject(merge({ duration, effect }, options));
 
     return this;
   }

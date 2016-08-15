@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import layout from '../templates/affinity-engine-stage-direction-backdrop';
 import multiton from 'ember-multiton-service';
 import { configurable, deepArrayConfigurable, registrant } from 'affinity-engine';
 import { DirectableComponentMixin } from 'affinity-engine-stage';
@@ -7,11 +8,8 @@ const {
   Component,
   computed,
   get,
-  observer,
-  set
+  observer
 } = Ember;
-
-const { String: { htmlSafe } } = Ember;
 
 const configurationTiers = [
   'directable.attrs',
@@ -22,6 +20,8 @@ const configurationTiers = [
 ];
 
 export default Component.extend(DirectableComponentMixin, {
+  layout,
+
   classNames: ['ae-stage-direction-backdrop-container'],
   hook: 'affinity_engine_stage_direction_backdrop',
 
@@ -29,10 +29,11 @@ export default Component.extend(DirectableComponentMixin, {
   preloader: registrant('affinity-engine/preloader'),
   translator: registrant('affinity-engine/translator'),
 
+  animationAdapter: configurable(configurationTiers, 'animationLibrary'),
   caption: configurable(configurationTiers, 'caption'),
   src: configurable(configurationTiers, 'src'),
   imageElement: configurable(configurationTiers, 'imageElement'),
-  transitions: deepArrayConfigurable(configurationTiers, 'directable.attrs.transitions', 'transition'),
+  transitions: deepArrayConfigurable(configurationTiers, 'directable.attrs.transitions'),
 
   didInsertElement(...args) {
     this._super(...args);
@@ -44,7 +45,7 @@ export default Component.extend(DirectableComponentMixin, {
     $image.addClass('ae-stage-direction-backdrop');
     $image.attr('alt', captionTranslation);
 
-    set(this, 'backgroundImage', htmlSafe($image.get(0)));
+    this.$('.ae-background-image-container').append($image);
   },
 
   captionTranslation: computed('directable.attrs.fixture.id', 'caption', {
