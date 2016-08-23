@@ -3,12 +3,12 @@ import { ImageDirection } from 'affinity-engine-stage-direction-image';
 
 const {
   computed,
-  get,
-  set
+  get
 } = Ember;
 
 export default ImageDirection.extend({
   componentPath: 'affinity-engine-stage-direction-image',
+  keyframeParentCategory: 'backdrops',
   layer: 'engine.stage.background.backdrop',
 
   _configurationTiers: [
@@ -25,16 +25,5 @@ export default ImageDirection.extend({
     get() {
       return get(this, '_baseImageDirectableDefinition');
     }
-  }),
-
-  _setup(fixtureOrId) {
-    this._entryPoint();
-
-    const backdrop = this._findFixture('backdrops', fixtureOrId);
-
-    set(this, 'attrs.keyframeParent', backdrop);
-    set(this, 'attrs.keyframe', this._findKeyframe(backdrop));
-
-    return this;
-  }
+  })
 });
