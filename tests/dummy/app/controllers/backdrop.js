@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import backdrops from 'dummy/affinity-engine/fixtures/backdrops';
+import keyframes from 'dummy/affinity-engine/fixtures/keyframes';
 
 const { Controller } = Ember;
 
@@ -23,6 +24,7 @@ export default Controller.extend({
     }
   },
   fixtures: {
-    backdrops
+    backdrops,
+    keyframes
   }
 });

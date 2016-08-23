@@ -6,15 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('affinity-engine', function() {
-    this.route('test-scenarios', function() {
-      this.route('stage', function() {
-        this.route('directions', function() {
-          this.route('backdrop');
-        });
-      });
-    });
-  });
+  this.route('backdrop');
 });
 
 export default Router;

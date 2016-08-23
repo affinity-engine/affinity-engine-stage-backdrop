@@ -1,74 +1,39 @@
 import Ember from 'ember';
-import multiton from 'ember-multiton-service';
-import { registrant } from 'affinity-engine';
-import { Direction } from 'affinity-engine-stage';
+import { ImageDirection } from 'affinity-engine-stage-direction-image';
 
 const {
+  computed,
   get,
-  merge,
-  set,
-  typeOf
+  set
 } = Ember;
 
-export default Direction.extend({
-  componentPath: 'affinity-engine-stage-direction-backdrop',
+export default ImageDirection.extend({
+  componentPath: 'affinity-engine-stage-direction-image',
   layer: 'engine.stage.background.backdrop',
 
-  config: multiton('affinity-engine/config', 'engineId'),
-  fixtureStore: multiton('affinity-engine/fixture-store', 'engineId'),
-  preloader: registrant('affinity-engine/preloader'),
+  _configurationTiers: [
+    'attrs',
+    'attrs.keyframe',
+    'attrs.keyframeParent',
+    'config.attrs.component.stage.direction.backdrop',
+    'config.attrs.component.stage.direction.image',
+    'config.attrs.component.stage',
+    'config.attrs'
+  ],
+
+  _directableDefinition: computed('_baseImageDirectableDefinition', {
+    get() {
+      return get(this, '_baseImageDirectableDefinition');
+    }
+  }),
 
   _setup(fixtureOrId) {
     this._entryPoint();
 
-    const fixtureStore = get(this, 'fixtureStore');
-    const fixture = typeOf(fixtureOrId) === 'object' ? fixtureOrId : fixtureStore.find('backdrops', fixtureOrId);
-    const id = get(fixture, 'id');
-    const preloader = get(this, 'preloader');
+    const backdrop = this._findFixture('backdrops', fixtureOrId);
 
-    if (!get(preloader, 'isPlaceholder')) {
-      const imageId = preloader.idFor(fixture, 'src');
-      const imageElement = preloader.getElement(imageId);
-
-      set(fixture, 'imageElement', imageElement);
-    }
-
-    set(this, 'attrs.fixture', fixture);
-    set(this, 'id', id);
-
-    return this;
-  },
-
-  _reset() {
-    const fixture = get(this, 'attrs.fixture');
-
-    return this._super({ fixture, transitions: Ember.A() });
-  },
-
-  caption(caption) {
-    this._entryPoint();
-
-    set(this, 'attrs.caption', caption);
-
-    return this;
-  },
-
-  delay(duration, options = {}) {
-    this._entryPoint();
-
-    const transitions = get(this, 'attrs.transitions') || set(this, 'attrs.transitions', []);
-
-    transitions.pushObject(merge({ duration }, options));
-
-    return this;
-  },
-
-  transition(effect, duration, options = {}) {
-    this._entryPoint();
-
-    const transitions = get(this, 'attrs.transitions') || set(this, 'attrs.transitions', []);
-
-    transitions.pushObject(merge({ duration, effect }, options));
+    set(this, 'attrs.keyframeParent', backdrop);
+    set(this, 'attrs.keyframe', this._findKeyframe(backdrop));
 
     return this;
   }

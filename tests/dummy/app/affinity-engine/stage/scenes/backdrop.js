@@ -1,7 +1,7 @@
 import { Scene, step } from 'affinity-engine-stage';
 
 export default Scene.extend({
-  name: 'backdrop Direction Test',
+  name: 'Image Direction Test',
 
   start: async function(script) {
     const classroom = script.backdrop('classroom');
@@ -22,13 +22,18 @@ export default Scene.extend({
     await classroom2.transition({ opacity: 0.6 });
 
     await step();
-    await script.backdrop('beach-day');
+    const beach = await script.backdrop('beach');
 
     await step();
     await script.backdrop({
-      id: 'beach-night',
-      caption: 'beach during the night',
-      src: 'engine/backdrops/beach-night.jpg'
+      defaultKeyframe: {
+        id: 'beach-night',
+        caption: 'beach during the night',
+        src: 'affinity-engine/backdrops/beach-night.jpg'
+      }
     });
+
+    await step();
+    beach.keyframe('night');
   }
 });
