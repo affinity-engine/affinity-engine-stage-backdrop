@@ -5,7 +5,7 @@ export default {
       direction: {
         backdrop: {
           classNames: {
-            base: 'ae-stage-direction-backdrop'
+            base: 'ae-cover'
           }
         }
       }
