@@ -1,31 +1,32 @@
 import { Scene, step } from 'affinity-engine-stage';
+import { task } from 'ember-concurrency';
 
 export default Scene.extend({
   name: 'Image Direction Test',
 
-  start: async function(script) {
+  start: task(function * (script) {
     const classroom = script.backdrop('classroom');
 
-    await step();
+    yield step();
     classroom.transition({ opacity: 0.2 });
 
-    await step();
-    await classroom.transition({ opacity: 0.3 }).transition({ opacity: 0.4 }).transition({ opacity: 0.5 });
+    yield step();
+    yield classroom.transition({ opacity: 0.3 }).transition({ opacity: 0.4 }).transition({ opacity: 0.5 });
 
-    await step();
+    yield step();
     classroom.caption('foo');
 
-    await step();
-    const classroom2 = await script.backdrop('classroom').transition({ opacity: 0.8 });
+    yield step();
+    const classroom2 = yield script.backdrop('classroom').transition({ opacity: 0.8 });
 
-    await step();
-    await classroom2.transition({ opacity: 0.6 });
+    yield step();
+    yield classroom2.transition({ opacity: 0.6 });
 
-    await step();
-    const beach = await script.backdrop('beach');
+    yield step();
+    const beach = yield script.backdrop('beach');
 
-    await step();
-    await script.backdrop({
+    yield step();
+    yield script.backdrop({
       keyframes: [{
         id: {
           caption: 'beach during the night',
@@ -34,7 +35,7 @@ export default Scene.extend({
       }]
     });
 
-    await step();
+    yield step();
     beach.keyframe({ time: 'night' });
-  }
+  })
 });
