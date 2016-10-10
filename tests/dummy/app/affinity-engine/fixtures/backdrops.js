@@ -1,12 +1,20 @@
 export default [{
   id: 'classroom',
-  keyframes: [{ id: 'classroom' }]
+  layerOrder: ['base'],
+  compositions: {
+    default: {
+      base: 'classroom'
+    }
+  }
 }, {
   id: 'beach',
-  keyframes: [{
-    id: 'beach-day'
-  }, {
-    id: 'beach-night',
-    time: 'night'
-  }]
-}];
+  layerOrder: ['base'],
+  compositions: {
+    default: {
+      base: 'beach-day'
+    },
+    night: {
+      base: 'beach-night'
+    }
+  }
+}]

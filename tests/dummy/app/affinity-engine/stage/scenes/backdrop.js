@@ -14,9 +14,6 @@ export default Scene.extend({
     yield classroom.transition({ opacity: 0.3 }).transition({ opacity: 0.4 }).transition({ opacity: 0.5 });
 
     yield step();
-    classroom.caption('foo');
-
-    yield step();
     const classroom2 = yield script.backdrop('classroom').transition({ opacity: 0.8 });
 
     yield step();
@@ -27,15 +24,15 @@ export default Scene.extend({
 
     yield step();
     yield script.backdrop({
-      keyframes: [{
-        id: {
-          caption: 'beach during the night',
-          src: 'affinity-engine/backdrops/beach-night.jpg'
+      layerOrder: ['base'],
+      compositions: {
+        default: {
+          base: 'beach-night'
         }
-      }]
+      }
     });
 
     yield step();
-    beach.keyframe({ time: 'night' });
+    beach.compose('night');
   })
 });

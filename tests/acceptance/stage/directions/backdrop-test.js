@@ -14,12 +14,11 @@ moduleForAcceptance('Acceptance | affinity-engine/stage/directions/backdrop', {
 });
 
 test('Affinity Engine | stage | Directions | Image', function(assert) {
-  assert.expect(16);
+  assert.expect(13);
 
   visit('/backdrop').then(() => {
     assert.ok($hook('affinity_engine_stage_direction_image').length > 0, 'backdrop is rendered');
     assert.equal(parseFloat($hook('affinity_engine_stage_direction_image').children(hook('ember_animation_box')).css('opacity')).toFixed(1), '0.0', 'begins unfaded');
-    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')} img`).attr('alt'), 'Classroom', '`alt` is set by the fixture `caption`');
     assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')} img`).attr('src').match('engine/backdrops/classroom.png'), 'it sets the `src` based on the associated fixture');
 
     return step(100);
@@ -29,10 +28,6 @@ test('Affinity Engine | stage | Directions | Image', function(assert) {
     return step(100);
   }).then(() => {
     assert.equal(parseFloat($hook('affinity_engine_stage_direction_image').children(hook('ember_animation_box')).css('opacity')).toFixed(1), 0.5, '`transition`s can be chained');
-
-    return step(100);
-  }).then(() => {
-    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')} img`).attr('alt'), 'foo', '`alt` can be set by direction function `caption`');
 
     return step(100);
   }).then(() => {
@@ -56,6 +51,5 @@ test('Affinity Engine | stage | Directions | Image', function(assert) {
   }).then(() => {
     assert.equal($hook('affinity_engine_stage_direction_image').length, 4, '`frame` does not create a new backdrop');
     assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(2) img`).attr('src').match('engine/backdrops/beach-night.jpg'), 'it changes the src of the backdrop');
-    assert.equal(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(2) img`).attr('alt'), 'beach during the night', 'it changes the alt of the backdrop');
   });
 });
