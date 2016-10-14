@@ -1,20 +1,24 @@
 export default [{
   id: 'classroom',
+  defaultIdentifiers: 'classroom',
   layerOrder: ['base'],
-  compositions: {
-    default: {
-      base: 'classroom'
-    }
+  layers: {
+    base: [{
+      id: 'classroom',
+      keyframe: 'classroom'
+    }]
   }
 }, {
   id: 'beach',
+  defaultIdentifiers: 'day',
   layerOrder: ['base'],
-  compositions: {
-    default: {
-      base: 'beach-day'
-    },
-    night: {
-      base: 'beach-night'
-    }
+  layers: {
+    base: [{
+      id: 'day',
+      keyframe: 'beach-day'
+    }, {
+      id: 'night',
+      keyframe: 'beach-night'
+    }]
   }
 }]

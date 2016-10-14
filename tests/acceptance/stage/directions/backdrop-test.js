@@ -14,7 +14,7 @@ moduleForAcceptance('Acceptance | affinity-engine/stage/directions/backdrop', {
 });
 
 test('Affinity Engine | stage | Directions | Image', function(assert) {
-  assert.expect(13);
+  assert.expect(11);
 
   visit('/backdrop').then(() => {
     assert.ok($hook('affinity_engine_stage_direction_image').length > 0, 'backdrop is rendered');
@@ -44,12 +44,7 @@ test('Affinity Engine | stage | Directions | Image', function(assert) {
 
     return step(100);
   }).then(() => {
-    assert.equal($hook('affinity_engine_stage_direction_image').length, 4, '`Image` can be passed a fixture directly');
-    assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(3) img`).attr('src').match('engine/backdrops/beach-night.jpg'), 'the manually defined backdrop src is set properly');
-
-    return step(100);
-  }).then(() => {
-    assert.equal($hook('affinity_engine_stage_direction_image').length, 4, '`frame` does not create a new backdrop');
+    assert.equal($hook('affinity_engine_stage_direction_image').length, 3, '`frame` does not create a new backdrop');
     assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(2) img`).attr('src').match('engine/backdrops/beach-night.jpg'), 'it changes the src of the backdrop');
   });
 });
