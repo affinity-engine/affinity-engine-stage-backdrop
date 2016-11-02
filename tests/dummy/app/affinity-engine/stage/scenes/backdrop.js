@@ -23,6 +23,6 @@ export default Scene.extend({
     const beach = yield script.backdrop('beach');
 
     yield step();
-    beach.compose('night');
+    beach.state('night');
   })
 });
