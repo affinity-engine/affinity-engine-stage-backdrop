@@ -6,10 +6,12 @@ const { Controller } = Ember;
 
 export default Controller.extend({
   config: {
-    animationLibrary: 'velocity',
-    transition: {
-      effect: { opacity: 0.1 },
-      duration: 100
+    global: {
+      animationLibrary: 'velocity',
+      transition: {
+        effect: { opacity: 0.1 },
+        duration: 100
+      }
     },
     component: {
       stage: {
