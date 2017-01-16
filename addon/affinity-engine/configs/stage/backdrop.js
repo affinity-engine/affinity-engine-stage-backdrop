@@ -4,7 +4,7 @@ export default {
     stage: {
       direction: {
         backdrop: {
-          renderMethod: 'canvas'
+          renderMethod: 'cover'
         }
       }
     }
