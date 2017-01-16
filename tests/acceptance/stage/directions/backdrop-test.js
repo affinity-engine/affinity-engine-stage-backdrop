@@ -14,14 +14,13 @@ moduleForAcceptance('Acceptance | affinity-engine/stage/directions/backdrop', {
 });
 
 test('Affinity Engine | stage | Directions | Image', function(assert) {
-  assert.expect(11);
+  assert.expect(9);
 
   const done = assert.async();
 
   visit('/backdrop').then(() => {
     assert.ok($hook('affinity_engine_stage_direction_image').length > 0, 'backdrop is rendered');
     assert.equal(parseFloat($hook('affinity_engine_stage_direction_image').children(hook('ember_animation_box')).css('opacity')).toFixed(1), '0.0', 'begins unfaded');
-    assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')} img`).attr('src').match('engine/backdrops/classroom.png'), 'it sets the `src` based on the associated fixture');
 
     return step(100);
   }).then(() => {
@@ -47,7 +46,6 @@ test('Affinity Engine | stage | Directions | Image', function(assert) {
     return step(100);
   }).then(() => {
     assert.equal($hook('affinity_engine_stage_direction_image').length, 3, '`frame` does not create a new backdrop');
-    assert.ok(Ember.$(`${hook('affinity_engine_stage_direction_image')}:nth(2) img`).attr('src').match('engine/backdrops/beach-night.jpg'), 'it changes the src of the backdrop');
 
     done();
   });

@@ -4,9 +4,7 @@ export default {
     stage: {
       direction: {
         backdrop: {
-          classNames: {
-            base: 'ae-cover'
-          }
+          renderMethod: 'canvas'
         }
       }
     }
