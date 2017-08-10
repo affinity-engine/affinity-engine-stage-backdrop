@@ -12,21 +12,11 @@ export default ImageDirection.extend({
   layer: 'engine.stage.background.backdrop',
 
   _configurationTiers: [
-    'attrs',
-    'attrs.keyframe',
-    'attrs.keyframeParent',
-    'links.attrs',
-    'links.fixtures.backdrop',
-    'links.fixtures.image',
-    'config.attrs.component.stage.direction.backdrop',
-    'config.attrs.component.stage.direction.image',
-    'config.attrs.component.stage',
-    'config.attrs.global'
-  ],
-
-  _directableDefinition: computed('_baseImageDirectableDefinition', {
-    get() {
-      return get(this, '_baseImageDirectableDefinition');
-    }
-  })
+    'global',
+    'component.stage',
+    'image',
+    'component.stage.direction.image',
+    'backdrop',
+    'component.stage.direction.backdrop'
+  ]
 });
