@@ -1,10 +1,4 @@
-import Ember from 'ember';
 import { ImageDirection } from 'affinity-engine-stage-direction-image';
-
-const {
-  computed,
-  get
-} = Ember;
 
 export default ImageDirection.extend({
   componentPath: 'affinity-engine-stage-direction-image',
