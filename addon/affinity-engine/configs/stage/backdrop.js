@@ -4,7 +4,10 @@ export default {
     stage: {
       direction: {
         backdrop: {
-          renderMethod: 'cover'
+          attrs: {
+            layer: 'stage.image.background',
+            renderMethod: 'cover'
+          }
         }
       }
     }
