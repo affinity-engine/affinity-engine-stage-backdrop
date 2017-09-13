@@ -9,8 +9,8 @@ export default ImageDirection.extend({
     'backdrop',
     'component.stage.direction.image',
     'image',
-    'component.stage.direction.every',
-    'component.stage.every',
-    'children'
+    'component.stage.direction.all',
+    'component.stage.all',
+    'all'
   ]
 });

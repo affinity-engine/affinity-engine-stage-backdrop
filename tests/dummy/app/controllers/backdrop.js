@@ -6,7 +6,7 @@ const { Controller } = Ember;
 
 export default Controller.extend({
   config: {
-    children: {
+    all: {
       animator: 'velocity',
       transition: {
         effect: { opacity: 0.1 },
